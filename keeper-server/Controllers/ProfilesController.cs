@@ -59,6 +59,19 @@ namespace keeper_server.Controllers
             }
         }
 
+        [HttpGet("{id}/vaultkeeps")]
+        public ActionResult<IEnumerable<VaultKeeperViewModel>> GetVaults(string id)
+        {
+            try
+            {
+                return Ok(_valServ.GetByProfileId(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
 
 
     }

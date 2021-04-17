@@ -48,6 +48,8 @@ namespace keeper_server.Service
             return _vRepo.Edit(editData);
         }
 
+
+
         internal string Delete(int id, string userId)
         {
             Vault original = GetById(id);
@@ -60,6 +62,17 @@ namespace keeper_server.Service
         {
             IEnumerable<Vault> vaults = _vRepo.GetByCreatorId(id);
             return vaults.ToList().FindAll(r => r.IsPrivate != true);
+        }
+
+        internal IEnumerable<VaultKeeperViewModel> GetByProfileId(string id)
+        {
+            IEnumerable<VaultKeeperViewModel> vaults = _vRepo.GetVaultsByProfileId(id);
+            return vaults.ToList().FindAll(v => v.IsPrivate);
+        }
+
+        internal IEnumerable<VaultKeeperViewModel> GetByAccountId(string id)
+        {
+            return _vRepo.GetVaultsByProfileId(id);
         }
     }
 }

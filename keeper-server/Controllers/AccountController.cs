@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeWorks.Auth0Provider;
 using keeper_server.Models;
@@ -12,10 +13,12 @@ namespace keeper_server.Controllers
     public class AccountController : ControllerBase
     {
         private readonly Service.ProfilesService _ps;
+        private readonly Service.VaultsService _valService;
 
-        public AccountController(ProfilesService ps)
+        public AccountController(ProfilesService ps, VaultsService valService)
         {
             _ps = ps;
+            _valService = valService;
         }
 
         [HttpGet]
@@ -25,6 +28,20 @@ namespace keeper_server.Controllers
             {
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 return Ok(_ps.GetOrCreateProfile(userInfo));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("vaultkeeps")]
+        public async Task<ActionResult<IEnumerable<VaultKeeperViewModel>>> GetVaultAsync()
+        {
+            try
+            {
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                return Ok(_valService.GetByAccountId(userInfo.Id));
             }
             catch (Exception e)
             {
