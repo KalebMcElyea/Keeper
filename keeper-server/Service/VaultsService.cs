@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using keeper_server.Models;
 using keeper_server.Repo;
 
@@ -53,6 +54,12 @@ namespace keeper_server.Service
             if (original.CreatorId != userId) { throw new Exception("Access Denied: Cannot Delete a Vault You did not Create"); }
             _vRepo.Remove(id);
             return "successfully deleted";
+        }
+
+        internal IEnumerable<Vault> GetVaultsByProfileId(string id)
+        {
+            IEnumerable<Vault> vaults = _vRepo.GetByCreatorId(id);
+            return vaults.ToList().FindAll(r => r.IsPrivate != true);
         }
     }
 }

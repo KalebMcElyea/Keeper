@@ -45,6 +45,22 @@ namespace keeper_server.Repo
             }, new { id }, splitOn: "id").FirstOrDefault();
         }
 
+        internal IEnumerable<Vault> GetByCreatorId(string id)
+        {
+            string sql = @"
+      SELECT 
+      v.*,
+      profile.*
+      FROM vaults v
+      JOIN profiles profile ON v.creatorId = profile.id
+      WHERE v.creatorId = @id;";
+            return _db.Query<Vault, Profile, Vault>(sql, (vault, profile) =>
+            {
+                vault.Creator = profile;
+                return vault;
+            }, new { id }, splitOn: "id");
+        }
+
         internal int Create(Vault newV)
         {
             string sql = @"
@@ -73,5 +89,7 @@ namespace keeper_server.Repo
             string sql = "DELETE FROM vaults WHERE id = @id LIMIT 1";
             _db.Execute(sql, new { id });
         }
+
+
     }
 }
