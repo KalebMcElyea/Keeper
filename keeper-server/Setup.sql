@@ -23,22 +23,45 @@
 --   FOREIGN KEY(creatorId)
 --    REFERENCES profiles (id)
 --     ON DELETE CASCADE
+
 -- );
 
-CREATE TABLE vaults
-(
-  id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
-  IsPrivate TINYINT,
-  creatorId VARCHAR(255) NOT NULL,
+-- CREATE TABLE vaults
+-- (
+--   id INT NOT NULL AUTO_INCREMENT,
+--   name VARCHAR(255) NOT NULL,
+--   description VARCHAR(255) NOT NULL,
+--   IsPrivate TINYINT,
+--   creatorId VARCHAR(255) NOT NULL,
 
-  PRIMARY KEY (id),
+--   PRIMARY KEY (id),
 
-  FOREIGN KEY(creatorId)
-   REFERENCES profiles (id)
-    ON DELETE CASCADE
-);
+--   FOREIGN KEY(creatorId)
+--    REFERENCES profiles (id)
+--     ON DELETE CASCADE
+-- );
+
+-- CREATE TABLE vaultkeeper
+-- (
+--     id INT NOT NULL AUTO_INCREMENT,
+--     vaultKeeperId VARCHAR(255) NOT NULL,
+--     vaultId INT NOT NULL,
+--     creatorId VARCHAR(255) NOT NULL,
+
+--     PRIMARY KEY (id),
+
+--     FOREIGN KEY (creatorId)
+--     REFERENCES profiles (id)
+--     ON DELETE CASCADE,
+
+--     FOREIGN KEY (vaultKeeperId)
+--     REFERENCES profiles (id)
+--     ON DELETE CASCADE,
+
+--     FOREIGN KEY (vaultId)
+--     REFERENCES vaults (id)
+--     ON DELETE CASCADE
+-- )
 
 
 -- DROP TABLE keeps

@@ -68,11 +68,10 @@ namespace keeper_server.Repo
       vault.*,
       vk.id AS VaultKeeperId,
       pr.*
-      FROM keeps k
+      FROM vaultkeeper vk
       JOIN vaults vault ON vk.creatorId = vault.id
-      JOIN profiles pr ON pr.id = vk.creatorId
+      JOIN profiles pr ON pr.id = k.creatorId
       WHERE vk.creatorId = @id;";
-
             return _db.Query<VaultKeeperViewModel, Profile, VaultKeeperViewModel>(sql, (vault, profile) =>
             {
                 vault.Creator = profile;

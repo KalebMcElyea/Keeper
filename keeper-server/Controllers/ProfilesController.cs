@@ -59,7 +59,7 @@ namespace keeper_server.Controllers
             }
         }
 
-        [HttpGet("{id}/vaultkeeps")]
+        [HttpGet("{id}/vault")]
         public ActionResult<IEnumerable<VaultKeeperViewModel>> GetVaults(string id)
         {
             try
