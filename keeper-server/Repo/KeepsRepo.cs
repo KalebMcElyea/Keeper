@@ -65,9 +65,9 @@ namespace keeper_server.Repo
         {
             string sql = @"
             INSERT INTO keeps
-            (name, creatorId, description, img)
+            (name, creatorId, description, img, isPrivate)
             VALUES
-            (@Name, @CreatorId, @Description, @Img);
+            (@Name, @CreatorId, @Description, @Img, @IsPrivate);
             SELECT LAST_INSERT_ID()";
             return _db.ExecuteScalar<int>(sql, newKeep);
         }

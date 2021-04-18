@@ -1,4 +1,4 @@
--- USE codeworksfinal;
+USE codeworksfinal;
 
 -- CREATE TABLE profiles
 -- (
@@ -9,22 +9,23 @@
 --   PRIMARY KEY (id)
 -- );
 
--- CREATE TABLE keeps
--- (
---   id INT NOT NULL AUTO_INCREMENT,
---   name VARCHAR(255) NOT NULL,
---   description VARCHAR(255) NOT NULL,
---   img VARCHAR(255),
---   creatorId VARCHAR(255),
+CREATE TABLE keeps
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  img VARCHAR(255),
+  creatorId VARCHAR(255),
+  isPrivate TINYINT NOT NULL,
 
 
---   PRIMARY KEY (id),
+  PRIMARY KEY (id),
 
---   FOREIGN KEY(creatorId)
---    REFERENCES profiles (id)
---     ON DELETE CASCADE
+  FOREIGN KEY(creatorId)
+   REFERENCES profiles (id)
+    ON DELETE CASCADE
 
--- );
+);
 
 -- CREATE TABLE vaults
 -- (

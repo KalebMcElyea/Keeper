@@ -20,5 +20,16 @@ class KeepsService {
       logger.error('Problems in the get keeps by account id', err)
     }
   }
+
+  async deleteKeep(id) {
+    await api.delete('api/keeps/' + id)
+    this.getAllKeeps()
+  }
+
+  async createKeep(keep) {
+    await api.post('api/keeps', keep)
+    this.getKeeps()
+  }
 }
+
 export const keepsService = new KeepsService()

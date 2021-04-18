@@ -1,6 +1,6 @@
 <template>
   <div class="home flex-grow-1 container-fluid">
-    <div class="row">
+    <div class="row pic">
       <keepsComponent v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
     </div>
   </div>
@@ -31,5 +31,10 @@ export default {
     height: 200px;
     width: 200px;
   }
+}
+.pic{
+  height: 150px;
+  width: auto;
+  transition: 0.3s ease-in-out;
 }
 </style>
