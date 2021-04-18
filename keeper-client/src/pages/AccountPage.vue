@@ -29,6 +29,9 @@
       </h1>
       <AccountKeep-component v-for="ak in state.keeps" :key="ak.id" :keeps-prop="ak" />
     </div>
+    <div>
+      <AccountVault-component v-for="val in state.vaults" :key="val.id" :vaults-prop="val" />
+    </div>
   </div>
 </template>
 
@@ -36,16 +39,22 @@
 import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { keepsService } from '../services/KeepsService'
+import { vaultsService } from '../services/VaultsService'
 
 export default {
   name: 'Account',
   setup() {
     const state = reactive({
       keeps: computed(() => AppState.keeps),
-      newKeep: {}
+      newKeep: {},
+      vaults: computed(() => AppState.vaults),
+      newVault: {}
     })
 
-    onMounted(() => keepsService.getKeepsByAccountId())
+    onMounted(() => {
+      keepsService.getKeepsByAccountId()
+      vaultsService.getVaultByAccountId()
+    })
 
     return {
       state,
@@ -62,5 +71,8 @@ export default {
 <style scoped>
 img {
   max-width: 200px;
+}
+.background{
+  background-color: black;
 }
 </style>

@@ -1,18 +1,18 @@
 <template>
   <div class="card-container keep-cards m-2">
     <div class="card">
-      <img
+      <!-- <img
         class="card-img pic"
         :src="keepsProp.img"
         alt="Card image"
-      >
+      > -->
       <div class="card-img-overlay d-flex align-items-end">
         <div class="row">
           <div class="col-12 text-light">
             <h4 class="keep-name text-left text-light">
-              {{ keepsProp.name }}
+              {{ vaultsProp }}
             </h4>
-            <i class="fa fa-trash text-danger" @click="deleteKeep" v-if="keepsProp.creatorId == state.account.id" aria-hidden="true"></i>
+            <!-- <i class="fa fa-trash text-danger" @click="deleteKeep" v-if="keepsProp.creatorId == state.account.id" aria-hidden="true"></i> -->
           </div>
         </div>
       </div>
@@ -27,9 +27,9 @@ import { keepsService } from '../services/KeepsService'
 import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 export default {
-  name: 'AccountKeepComponent',
+  name: 'AccountVaultComponent',
   props: {
-    keepsProp: {
+    vaultsProp: {
       type: Object,
       required: true
     }

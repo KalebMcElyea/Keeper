@@ -2,17 +2,17 @@ import { AppState } from '../AppState'
 import { api } from './AxiosService'
 
 class ProfilesService {
-  async GetUserProfile(id) {
-    const res = await api.get('api/profiles/' + id)
-    AppState.profile = res.data
+  async GetProfileById(id) {
+    const res = await api.get(`api/profiles/${id}`)
+    AppState.profiles = res.data
   }
 
-  async getUserVaults(id) {
+  async getVaultsByProfileId(id) {
     const res = await api.get(`api/profiles/${id}/vaults`)
     AppState.profileVaults = res.data
   }
 
-  async getUserKeeps(id) {
+  async getKeepsByProfileId(id) {
     const res = await api.get('api/profiles/' + id + '/keeps')
     AppState.profileKeeps = res.data
   }

@@ -18,7 +18,7 @@ namespace keeper_server.Service
         public IEnumerable<Keep> GetAll()
         {
             IEnumerable<Keep> keeps = _kRepo.GetAll();
-            return keeps;
+            return keeps.ToList().FindAll(r => r.IsPrivate != true);
         }
 
         internal Keep GetById(int id)

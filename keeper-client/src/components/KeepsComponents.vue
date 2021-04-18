@@ -9,10 +9,12 @@
       <div class="card-img-overlay d-flex align-items-end">
         <div class="row">
           <div class="col-12 text-light mt-5">
-            <h4 class="keep-name text-left">
+            <h4 class="keep-name text-left text-light">
               {{ keepProp.name }}
             </h4>
-            <i class="fa fa-user-circle mr-5" aria-hidden="true"></i>
+            <router-link :to="{name:'Profile', params:{id:keepProp.id}}">
+              <i class="font fa fa-user-circle mr-5" aria-hidden="true"></i>
+            </router-link>
           </div>
         </div>
       </div>
@@ -27,6 +29,10 @@ export default {
   name: 'KeepsComponent',
   props: {
     keepProp: {
+      type: Object,
+      required: true
+    },
+    profileProp: {
       type: Object,
       required: true
     }
@@ -58,6 +64,15 @@ export default {
 }
 .keep-cards{
   transition: all .3s;
+}
+
+.font{
+  color: aqua;
+  box-shadow: #aa50e2;
+}
+
+.font:hover{
+  transform: translateY(-1px);
 }
 
 </style>

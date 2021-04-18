@@ -26,13 +26,15 @@ namespace keeper_server.Controllers
         {
             try
             {
-                return Ok(_service.GetProfileById(id));
+                Profile profile = _service.GetProfileById(id);
+                return Ok(profile);
             }
-            catch (System.Exception err)
+            catch (Exception e)
             {
-                return BadRequest(err.Message);
+                return BadRequest(e.Message);
             }
         }
+
         [HttpGet("{id}/keeps")]
         public ActionResult<IEnumerable<Keep>> GetKeepsByProfileId(string id)
         {

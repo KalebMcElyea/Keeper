@@ -1,4 +1,4 @@
-<template>
+<template class="backgroud">
   <header>
     <Navbar />
   </header>
@@ -30,4 +30,5 @@ footer {
   color: white;
   text-align: center;
 }
+
 </style>
