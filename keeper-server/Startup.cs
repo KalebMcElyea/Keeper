@@ -70,12 +70,14 @@ namespace keeper_server
             services.AddTransient<ProfilesRepo>();
             services.AddTransient<KeepsRepo>();
             services.AddTransient<VaultsRepo>();
+            services.AddTransient<VaultKeepRepo>();
 
 
             // // TODO Transient Services
             services.AddTransient<ProfilesService>();
             services.AddTransient<KeepsService>();
             services.AddTransient<VaultsService>();
+            services.AddTransient<VaultKeepsService>();
 
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
 

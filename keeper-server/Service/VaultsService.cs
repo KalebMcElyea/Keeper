@@ -29,6 +29,10 @@ namespace keeper_server.Service
             {
                 throw new Exception("Invalid Id");
             }
+            if (data.IsPrivate == true)
+            {
+                throw new SystemException("You cannot access this vault");
+            }
             return data;
         }
 
@@ -64,15 +68,6 @@ namespace keeper_server.Service
             return vaults.ToList().FindAll(r => r.IsPrivate != true);
         }
 
-        internal IEnumerable<VaultKeeperViewModel> GetByProfileId(string id)
-        {
-            IEnumerable<VaultKeeperViewModel> vaults = _vRepo.GetVaultsByProfileId(id);
-            return vaults.ToList().FindAll(v => v.IsPrivate != true);
-        }
 
-        internal IEnumerable<VaultKeeperViewModel> GetByAccountId(string id)
-        {
-            return _vRepo.GetVaultsByProfileId(id);
-        }
     }
 }

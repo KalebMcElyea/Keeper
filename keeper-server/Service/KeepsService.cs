@@ -9,10 +9,12 @@ namespace keeper_server.Service
     public class KeepsService
     {
         private readonly KeepsRepo _kRepo;
+        private readonly VaultsService _valServ;
 
-        public KeepsService(KeepsRepo kRepo)
+        public KeepsService(KeepsRepo kRepo, VaultsService valServ)
         {
             _kRepo = kRepo;
+            _valServ = valServ;
         }
 
         public IEnumerable<Keep> GetAll()
@@ -64,6 +66,16 @@ namespace keeper_server.Service
         internal IEnumerable<Keep> GetKeepsByAccountId(string id)
         {
             return _kRepo.GetByCreatorId(id);
+        }
+
+        internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
+        {
+            var vault = _valServ.GetById(id);
+            if (vault.IsPrivate != false)
+            {
+                throw new SystemException("You don't have access to this vault");
+            }
+            return _kRepo.GetKeepsByVaultId(id);
         }
     }
 }

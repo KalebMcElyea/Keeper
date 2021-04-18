@@ -37,19 +37,7 @@ namespace keeper_server.Controllers
             }
         }
 
-        [HttpGet("vaultkeeps")]
-        public async Task<ActionResult<IEnumerable<VaultKeeperViewModel>>> GetVaultAsync()
-        {
-            try
-            {
-                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-                return Ok(_valService.GetByAccountId(userInfo.Id));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
+
 
         [HttpGet("keeps")]
         public async Task<ActionResult<IEnumerable<Keep>>> GetKeepsByAccountId()

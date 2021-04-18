@@ -9,23 +9,23 @@ USE codeworksfinal;
 --   PRIMARY KEY (id)
 -- );
 
-CREATE TABLE keeps
-(
-  id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
-  img VARCHAR(255),
-  creatorId VARCHAR(255),
-  isPrivate TINYINT NOT NULL,
+-- CREATE TABLE keeps
+-- (
+--   id INT NOT NULL AUTO_INCREMENT,
+--   name VARCHAR(255) NOT NULL,
+--   description VARCHAR(255) NOT NULL,
+--   img VARCHAR(255),
+--   creatorId VARCHAR(255),
+--   isPrivate TINYINT NOT NULL,
 
 
-  PRIMARY KEY (id),
+--   PRIMARY KEY (id),
 
-  FOREIGN KEY(creatorId)
-   REFERENCES profiles (id)
-    ON DELETE CASCADE
+--   FOREIGN KEY(creatorId)
+--    REFERENCES profiles (id)
+--     ON DELETE CASCADE
 
-);
+-- );
 
 -- CREATE TABLE vaults
 -- (
@@ -42,12 +42,14 @@ CREATE TABLE keeps
 --     ON DELETE CASCADE
 -- );
 
--- CREATE TABLE vaultkeeper
+
+
+-- CREATE TABLE vaultkeeps
 -- (
 --     id INT NOT NULL AUTO_INCREMENT,
---     vaultKeeperId VARCHAR(255) NOT NULL,
---     vaultId INT NOT NULL,
 --     creatorId VARCHAR(255) NOT NULL,
+--     vaultId INT NOT NULL,
+--     keepId INT NOT NULL,
 
 --     PRIMARY KEY (id),
 
@@ -55,15 +57,16 @@ CREATE TABLE keeps
 --     REFERENCES profiles (id)
 --     ON DELETE CASCADE,
 
---     FOREIGN KEY (vaultKeeperId)
---     REFERENCES profiles (id)
+--     FOREIGN KEY(vaultId)
+--     REFERENCES vaults (id)
 --     ON DELETE CASCADE,
 
---     FOREIGN KEY (vaultId)
---     REFERENCES vaults (id)
+--     FOREIGN KEY(keepId)
+--     REFERENCES keeps (id)
 --     ON DELETE CASCADE
--- )
+-- );
 
 
 -- DROP TABLE keeps
 -- DROP TABLE vaults
+-- DROP TABLE vaultkeeper
