@@ -21,9 +21,10 @@ class KeepsService {
     }
   }
 
-  async deleteKeep(id) {
-    await api.delete('api/keeps/' + id)
-    this.getAllKeeps()
+  async deleteKeep(keepId) {
+    await api.delete('api/keeps/' + keepId)
+    const keepIndex = AppState.keeps.findIndex(k => k.id === keepId)
+    AppState.keeps.splice(keepIndex, 1)
   }
 
   async createKeep(keep) {

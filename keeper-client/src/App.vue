@@ -5,10 +5,6 @@
   <main>
     <router-view />
   </main>
-  <footer>
-    <div class="bg-dark text-light text-center p-4">
-    </div>
-  </footer>
 </template>
 
 <script>
@@ -30,7 +26,6 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: -50%;
   background-color: rgb(78, 78, 78);
   color: white;
   text-align: center;

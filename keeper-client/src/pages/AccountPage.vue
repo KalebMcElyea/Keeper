@@ -19,11 +19,15 @@
             Create Keep
           </button>
         </form>
-        <span>
-        </span></span>
+      </span>
     </div>
-    <div class="mt-5 card " v-if="state.keeps">
-      {{ state.keeps }}
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h1>
+        Keeps <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      </h1>
+      <AccountKeep-component v-for="ak in state.keeps" :key="ak.id" :keeps-prop="ak" />
     </div>
   </div>
 </template>

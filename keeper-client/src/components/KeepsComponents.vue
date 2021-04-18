@@ -8,11 +8,11 @@
       >
       <div class="card-img-overlay d-flex align-items-end">
         <div class="row">
-          <div class="col-12 text-light">
-            <h4 class="keep-name text-left ">
+          <div class="col-12 text-light mt-5">
+            <h4 class="keep-name text-left">
               {{ keepProp.name }}
             </h4>
-            <i class="fas fa-user-circle"></i>
+            <i class="fa fa-user-circle mr-5" aria-hidden="true"></i>
           </div>
         </div>
       </div>
