@@ -1,4 +1,4 @@
-USE codeworksfinal;
+
 
 -- CREATE TABLE profiles
 -- (
@@ -69,4 +69,4 @@ USE codeworksfinal;
 
 -- DROP TABLE keeps
 -- DROP TABLE vaults
--- DROP TABLE vaultkeeper
+-- DROP TABLE vaultkeeps

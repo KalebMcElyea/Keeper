@@ -52,5 +52,20 @@ namespace keeper_server.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+
+        [HttpGet("vaults")]
+        public async Task<ActionResult<IEnumerable<Vault>>> GetVaultssByAccountId()
+        {
+            try
+            {
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                return Ok(_valService.GetVaultsByAccountId(userInfo.Id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

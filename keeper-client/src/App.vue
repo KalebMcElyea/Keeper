@@ -1,8 +1,8 @@
-<template class="backgroud">
+<template>
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="background">
     <router-view />
   </main>
 </template>
@@ -26,9 +26,16 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgb(78, 78, 78);
-  color: white;
   text-align: center;
+}
+
+.background{
+  background-color: black;
+}
+
+#app{
+  background-color: black;
+
 }
 
 </style>

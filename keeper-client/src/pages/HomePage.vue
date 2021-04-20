@@ -1,5 +1,5 @@
 <template>
-  <div class="home flex-grow-1 container-fluid background">
+  <div class="home d-flex container-fluid justify-content-center">
     <div class="row pic">
       <keepsComponent v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
     </div>
@@ -28,8 +28,8 @@ export default {
   text-align: center;
   user-select: none;
   > img{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 1500px;
   }
 }
 .pic{
@@ -37,7 +37,5 @@ export default {
   width: auto;
   transition: 0.3s ease-in-out;
 }
-.background{
-  background-color: black;
-}
+
 </style>

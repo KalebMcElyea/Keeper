@@ -8,13 +8,18 @@ class VaultsService {
     AppState.activeVault = res.data
   }
 
-  async getVaultByAccountId() {
+  async getVaultsByAccountId() {
     try {
       const res = await api.get('account/vaults')
       AppState.vaults = res.data
     } catch (err) {
-      logger.error('Problems in the get keeps by account id', err)
+      logger.error('Problems in the get vaults by account id', err)
     }
+  }
+
+  async createVault(keep) {
+    await api.post('api/vaults/', keep)
+    this.getVaultsByAccountId()
   }
 
   async deleteVault(valId) {

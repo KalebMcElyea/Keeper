@@ -24,8 +24,8 @@
 import { computed, reactive } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { keepsService } from '../services/KeepsService'
-import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
+
 export default {
   name: 'AccountKeepComponent',
   props: {
@@ -35,7 +35,6 @@ export default {
     }
   },
   setup(props) {
-    const route = useRoute()
     const state = reactive({
       account: computed(() => AppState.account)
     })
@@ -44,7 +43,7 @@ export default {
       deleteKeep() {
         try {
           if (window.confirm('Are you sure you want to delete this KEEP?')) {
-            keepsService.deleteKeep(route.params.id)
+            keepsService.deleteKeep(props.keepsProp.id)
           }
         } catch (error) {
           logger.log(error)
@@ -57,14 +56,14 @@ export default {
 
 <style lang="scss" scoped>
 .pic{
-  height: 150px;
-  width: auto;
-  box-shadow: 2px 6px 8px 2px #aa50e2;
+  height: 250px;
+  width: 300px;
+  box-shadow: 2px 4px 4px 2px  #aa50e2;
   transition: 0.3s ease-in-out;
 }
 .keep-cards:hover{
-  transform: translateY(-2px);
-  box-shadow: 2px 8px 16px 2px aqua;
+  transform: translateY(-10px);
+
 }
 .keep-cards{
   transition: all .3s;

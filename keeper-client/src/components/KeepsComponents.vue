@@ -1,8 +1,8 @@
 <template>
-  <div class="card-container keep-cards m-2">
+  <div class="card-container keep-cards m-2 justify-content-center ml-2">
     <div class="card">
       <img
-        class="card-img pic"
+        class="card card-img pic"
         :src="keepProp.img"
         alt="Card image"
       >
@@ -53,8 +53,8 @@ export default {
 }
 
 .pic{
-  height: 150px;
-  width: auto;
+  height: 200px;
+  width: 200px;
   box-shadow: 2px 6px 8px 2px #aa50e2;
   transition: 0.3s ease-in-out;
 }
