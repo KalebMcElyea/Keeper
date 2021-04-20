@@ -6,6 +6,13 @@
 
     <h1 class="text-light col-6 m-5 pt-3">
       {{ account.name }}
+      <br>
+      <h4>
+        <small> Vaults: </small>
+      </h4>
+      <h4>
+        <small> Keeps: </small>
+      </h4>
     </h1>
     <div class="col-12 mt-5">
       <!-- <button type="button" class="btn btn-dark mb-5" data-toggle="modal" data-target="#createKeep">
@@ -136,7 +143,9 @@
             </button>
           </h1>
           <div class="row">
-            <AccountVault-component v-for="val in state.vaults" :key="val.id" :vaults-prop="val" />
+            <router-link :to="{name:'Vault', params:{id:state.vaults.creatorId}}">
+              <AccountVault-component v-for="val in state.vaults" :key="val.id" :vaults-prop="val" />
+            </router-link>
           </div>
         </div>
       </div>

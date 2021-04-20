@@ -1,10 +1,39 @@
 <template>
-  <div class="ProfilePage text-light m-2">
-    <h5>Welcome to the profile's page</h5>
+  <div class="ProfilePage row" v-if="state.profileKeeps">
+    <div class="text-light 2 col-12 ml-4 pt-2" v-if="state.profile">
+      <h5>Welcome to the profile's page</h5>
+      <img :src="state.profile.picture" alt="">
+      <h4 class="pt-2">
+        {{ state.profile.name }}
+      </h4>
+      <br>
+      <h5> Vaults: </h5>
+      <br>
+      <h5> Keeps: </h5>
+      <br>
+      <br>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-light ml-5">
+          Vaults:
+        </h3>
+      </div>
+    </div>
+    <div class="row" data-toggle="modal" data-target="#exampleModal">
+      <vaultsComponent v-for="v in state.profileVaults" :key="v.id" :vault-prop="v" />
+    </div>
+    <div class="col-12">
+      <h3 class="text-light ml-5">
+        Keeps:
+      </h3>
 
-    <!-- <img :src="state.profiles.picture" alt="">
-    <profileComponent v-for="pc in state.profile" :key="pc.id" :profile-prop="pc" /> -->
-    {{ state.profileKeeps }}
+      <div class="row pic ml-3" data-toggle="modal" data-target="#exampleModal">
+        <keepsComponent v-for="k in state.profileKeeps" :key="k.id" :keep-prop="k" />
+      </div>
+
+      <!-- <img :src="state.profileKeeps.picture" alt=""> -->
+    </div>
   </div>
 </template>
 
@@ -19,9 +48,10 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
-      profiles: computed(() => AppState.profile),
+      profile: computed(() => AppState.profiles),
       profileKeeps: computed(() => AppState.profileKeeps),
       profileVaults: computed(() => AppState.profileVaults),
+      keeps: computed(() => AppState.keeps),
       user: computed(() => AppState.user),
       account: computed(() => AppState.account)
     })
@@ -40,6 +70,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lan
+    KeepComponentg="scss" scoped>
 
 </style>

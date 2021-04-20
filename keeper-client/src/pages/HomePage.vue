@@ -15,7 +15,8 @@ export default {
   name: 'Home',
   setup() {
     const state = reactive({
-      keeps: computed(() => AppState.keeps)
+      keeps: computed(() => AppState.keeps),
+      activeKeep: computed(() => AppState.activeKeep)
     })
     onMounted(() => keepsService.getKeeps())
     return { state }

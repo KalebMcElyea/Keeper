@@ -8,13 +8,17 @@
       >
       <div class="card-img-overlay d-flex align-items-end">
         <div class="row">
-          <div class="col-12 text-light mt-5">
-            <h4 class="keep-name text-left text-light">
+          <div class="col-12 text-dark mt-5">
+            <h4 class="keep-name text-left text-light"
+                data-toggle="modal"
+                :data-target="'#keepModal' + keepProp.id"
+            >
               {{ keepProp.name }}
             </h4>
-            <router-link :to="{name:'Profile', params:{id:keepProp.id}}">
+            <router-link :to="{name:'Profile', params:{id:keepProp.creatorId}}">
               <i class="font fa fa-user-circle mr-5" aria-hidden="true"></i>
             </router-link>
+            <ActiveKeepComponents :keep="keepProp" />
           </div>
         </div>
       </div>
@@ -25,14 +29,11 @@
 <script>
 
 import { reactive } from '@vue/reactivity'
+
 export default {
   name: 'KeepsComponent',
   props: {
     keepProp: {
-      type: Object,
-      required: true
-    },
-    profileProp: {
       type: Object,
       required: true
     }
@@ -42,8 +43,8 @@ export default {
 
     })
     return { state }
-  },
-  components: {}
+  }
+
 }
 </script>
 
@@ -59,11 +60,11 @@ export default {
   transition: 0.3s ease-in-out;
 }
 .keep-cards:hover{
-  transform: translateY(-2px);
+  // transform: translateY(-2px);
   box-shadow: 2px 8px 16px 2px aqua;
 }
 .keep-cards{
-  transition: all .3s;
+  transition: all .2s;
 }
 
 .font{

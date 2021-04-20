@@ -17,8 +17,8 @@ class VaultsService {
     }
   }
 
-  async createVault(keep) {
-    await api.post('api/vaults/', keep)
+  async createVault(id) {
+    await api.post('api/vaults/', id)
     this.getVaultsByAccountId()
   }
 
