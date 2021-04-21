@@ -4,14 +4,14 @@
       <img class="rounded acc-img" :src="account.picture" alt="" />
     </div>
 
-    <h1 class="text-light col-6 m-5 pt-3">
+    <h1 class="text-light col-6 m-5 pt-3 font">
       {{ account.name }}
       <br>
       <h4>
-        <small> Vaults: </small>
+        <small class="font"> Vaults: {{ state.vaults.length }} </small>
       </h4>
       <h4>
-        <small> Keeps: </small>
+        <small class="font"> Keeps: {{ state.keeps.length }}</small>
       </h4>
     </h1>
     <div class="col-12 mt-5">
@@ -24,7 +24,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">
+              <h5 class="modal-title font">
                 Create A Keep
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -37,7 +37,7 @@
                   <input type="text"
                          name="title"
                          id="title"
-                         class="form-control"
+                         class="form-control font"
                          placeholder="Enter Keep Name"
                          aria-describedby="helpId"
                          v-model="state.newKeep.name"
@@ -46,7 +46,7 @@
                   <input type="text"
                          name="title"
                          id="title"
-                         class="form-control"
+                         class="form-control font"
                          placeholder="Enter Keep Description"
                          aria-describedby="helpId"
                          v-model="state.newKeep.description"
@@ -55,7 +55,7 @@
                   <input type="text"
                          name="img"
                          id="img"
-                         class="form-control"
+                         class="form-control font"
                          placeholder="Enter img url"
                          aria-describedby="helpId"
                          v-model="state.newKeep.img"
@@ -65,10 +65,10 @@
             </div>
             <form>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                <button type="button" class="btn btn-danger font" data-dismiss="modal">
                   Close
                 </button>
-                <button class="btn btn-dark" @click="createKeep">
+                <button class="btn btn-dark font" @click="createKeep">
                   Create Keep
                 </button>
               </div>
@@ -83,7 +83,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">
+              <h5 class="modal-title font">
                 Create A Vault
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -96,7 +96,7 @@
                   <input type="text"
                          name="title"
                          id="title"
-                         class="form-control"
+                         class="form-control font"
                          placeholder="Enter Keep Name"
                          aria-describedby="helpId"
                          v-model="state.newVault.name"
@@ -105,16 +105,16 @@
                   <input type="text"
                          name="title"
                          id="title"
-                         class="form-control"
+                         class="form-control font"
                          placeholder="Enter Keep Description"
                          aria-describedby="helpId"
                          v-model="state.newVault.description"
                   >
                   <br>
                   <label for="">{{ state.newKeep.isPrivate }}</label>
-                  Private?<input type="checkbox" v-model="state.newVault.isPrivate" class="m-2">
+                  <span class="font">Private?</span><input type="checkbox" v-model="state.newVault.isPrivate" class="m-2">
                   <p>
-                    <small>
+                    <small class="font">
                       You want to make this vault private?
                     </small>
                   </p>
@@ -123,10 +123,10 @@
             </div>
             <form>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                <button type="button" class="btn btn-danger font" data-dismiss="modal">
                   Close
                 </button>
-                <button class="btn btn-dark" @click="createVault">
+                <button class="btn btn-dark font" @click="createVault">
                   Create Vault
                 </button>
               </div>
@@ -137,7 +137,7 @@
 
       <div class="row mt-5">
         <div class="col-12">
-          <h1 class=" text-light mb-3">
+          <h1 class=" text-light mb-3 font">
             Vaults: <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createVault">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
@@ -152,7 +152,7 @@
 
       <div class="row mt-5">
         <div class="col-12">
-          <h1 class="text-light ml-3">
+          <h1 class="text-light ml-3 font">
             Keeps: <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createKeep">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
@@ -212,6 +212,9 @@ img {
 }
 .background{
   background-color: black;
+}
+.font{
+  font-family: 'Lato', sans-serif;
 }
 
 </style>

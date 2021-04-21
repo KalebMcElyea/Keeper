@@ -1,21 +1,24 @@
 <template>
   <div class="ProfilePage row" v-if="state.profileKeeps">
     <div class="text-light 2 col-12 ml-4 pt-2" v-if="state.profile">
-      <h5>Welcome to the profile's page</h5>
       <img :src="state.profile.picture" alt="">
-      <h4 class="pt-2">
+      <h4 class="pt-2 font">
         {{ state.profile.name }}
       </h4>
       <br>
-      <h5> Vaults: </h5>
+      <h5 class="font">
+        Vaults:  {{ state.profileVaults.length }}
+      </h5>
       <br>
-      <h5> Keeps: </h5>
+      <h5 class="font">
+        Keeps: {{ state.profileKeeps.length }}
+      </h5>
       <br>
       <br>
     </div>
     <div class="row">
       <div class="col-12">
-        <h3 class="text-light ml-5">
+        <h3 class="text-light ml-5 font">
           Vaults:
         </h3>
       </div>
@@ -24,7 +27,7 @@
       <vaultsComponent v-for="v in state.profileVaults" :key="v.id" :vault-prop="v" />
     </div>
     <div class="col-12">
-      <h3 class="text-light ml-5">
+      <h3 class="text-light ml-5 font">
         Keeps:
       </h3>
 
@@ -54,6 +57,7 @@ export default {
       keeps: computed(() => AppState.keeps),
       user: computed(() => AppState.user),
       account: computed(() => AppState.account)
+
     })
     onMounted(() => {
       profilesService.GetProfileById(route.params.id)
@@ -72,5 +76,7 @@ export default {
 
 <style lan
     KeepComponentg="scss" scoped>
-
+.font{
+  font-family: 'Lato', sans-serif;
+}
 </style>

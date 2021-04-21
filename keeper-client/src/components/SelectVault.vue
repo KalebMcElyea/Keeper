@@ -1,0 +1,35 @@
+<template>
+  <div class="SelectVault">
+    <button @click="addToVault" class="dropdown-item">
+      {{ vaultProp.name }}
+    </button>
+  </div>
+</template>
+
+<script>
+import { reactive } from 'vue'
+import { vaultKeepsService } from '../services/VaultKeepsService'
+import router from '../router'
+export default {
+  name: 'SelectVault',
+  props: {
+    vaultProp: { type: Object, required: true },
+    keepProp: { type: Object, required: true }
+  },
+  setup(props) {
+    const state = reactive({
+    })
+    return {
+      state,
+      async addToVault() {
+        await vaultKeepsService.createVaultKeep({ vaultId: props.vaultProp.id, keepId: props.keepProp.id })
+        router.push({ name: 'Vault', params: { id: props.vaultProp.id } })
+      }
+    }
+  },
+  components: {}
+}
+</script>
+
+<style lang="scss" scoped>
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card-container keep-cards m-2 justify-content-center ml-2">
+  <div class="card-container keep-cards m-2 justify-content-center ml-5">
     <div class="card">
       <img
         class="card card-img pic"
@@ -9,14 +9,14 @@
       <div class="card-img-overlay d-flex align-items-end">
         <div class="row">
           <div class="col-12 text-dark mt-5">
-            <h4 class="keep-name text-left text-light"
+            <h4 class="keep-name text-light font"
                 data-toggle="modal"
                 :data-target="'#keepModal' + keepProp.id"
             >
               {{ keepProp.name }}
             </h4>
             <router-link :to="{name:'Profile', params:{id:keepProp.creatorId}}">
-              <i class="font fa fa-user-circle mr-5" aria-hidden="true"></i>
+              <i class="icon fa fa-user-circle mr-5" aria-hidden="true"></i>
             </router-link>
             <ActiveKeepComponents :keep="keepProp" />
           </div>
@@ -54,8 +54,8 @@ export default {
 }
 
 .pic{
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   box-shadow: 2px 6px 8px 2px #aa50e2;
   transition: 0.3s ease-in-out;
 }
@@ -73,7 +73,19 @@ export default {
 }
 
 .font:hover{
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+.font{
+  font-family: 'Libre Baskerville', serif;
+}
+.icon:hover{
+  transform: translateY(-3px);
+}
+.icon{
+  color:rgb(212, 211, 211)
+}
+.keep-name:hover{
+cursor: pointer;
 }
 
 </style>

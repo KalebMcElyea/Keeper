@@ -1,11 +1,11 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark navcolor">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
+        <img class="nav-image"
+             alt="logo"
+             src="../assets/img/Vault-Keeper.jpg"
+             height="45"
         />
       </div>
     </router-link>
@@ -23,12 +23,12 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
+          <router-link :to="{ name: 'Home' }" class="nav-link font">
+            <h3> Home </h3>
           </router-link>
         </li>
       </ul>
-      <span class="navbar-text">
+      <span class="navbar-text font">
         <button
           class="btn btn-outline-primary text-uppercase"
           @click="login"
@@ -56,12 +56,12 @@
             @click="state.dropOpen = false"
           >
             <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item list-group-item-action hoverable">
+              <div class="list-group-item list-group-item-action hoverable font">
                 Account
               </div>
             </router-link>
             <div
-              class="list-group-item list-group-item-action hoverable"
+              class="list-group-item list-group-item-action hoverable font"
               @click="logout"
             >
               logout
@@ -117,6 +117,19 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color: white;
+  height: 80px;
+  width: 80px;
+  font-family: 'Lato', sans-serif;
+}
+.nav-color{
+  background-color: black;
+}
+.nav-image{
+  width: 200px;
+  height: 200px;
+}
+.font{
+  font-family: 'Lato', sans-serif;
 }
 </style>
