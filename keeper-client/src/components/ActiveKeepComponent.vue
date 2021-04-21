@@ -40,7 +40,7 @@
             </div>
             <div>
               <div class="footer m-5">
-                <button type="button" class="btn btn-secondary m-2 font" data-dismiss="modal">
+                <button type="button" class="btn btn-danger m-2 font" data-dismiss="modal">
                   Close
                 </button>
                 <div class="dropdown open">

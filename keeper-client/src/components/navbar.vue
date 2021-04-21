@@ -20,8 +20,8 @@
     >
       <span class="navbar-toggler-icon" />
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse hoverable" id="navbarText">
+      <ul class="navbar-nav mr-auto hoverable">
         <li class="nav-item">
           <router-link :to="{ name: 'Home' }" class="nav-link font">
             <h3> Home </h3>
@@ -126,8 +126,8 @@ a:hover {
   background-color: black;
 }
 .nav-image{
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }
 .font{
   font-family: 'Lato', sans-serif;
