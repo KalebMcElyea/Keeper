@@ -36,6 +36,7 @@ namespace keeper_server.Controllers
         }
 
         [HttpGet("{id}")]
+
         public ActionResult<Vault> GetById(int id)
         {
             try

@@ -86,6 +86,17 @@ namespace keeper_server.Repo
             return editData;
         }
 
+        internal IEnumerable<Vault> GetVaultsByOwnerId(string id)
+        {
+            string sql = @"
+            SELECT
+            v.*,
+            pro.*
+            FROM vaults v
+            JOIN profiles pro ON v.creatorId = pro.id
+            WHERE v.creatorId = @id;";
+            return _db.Query<Vault, Profile, Vault>(sql, (vault, profile) => { vault.Creator = profile; return vault; }, new { id }, splitOn: "id");
+        }
 
         internal void Remove(int id)
         {

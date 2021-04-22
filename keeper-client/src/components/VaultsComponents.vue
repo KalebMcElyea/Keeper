@@ -1,9 +1,9 @@
 <template>
-  <div class="m-5 vault-cards">
+  <div class="vaults-component m-5 vault-cards">
     <div class="d-flex card d-flex justify-content-center">
       <div class="row">
         <div class="col-12 text-center">
-          <router-link :to="{name:'Vault', params:{id:vaultProp.creatorId}}">
+          <router-link :to="{name:'Vault', params:{id: vaultProp.id}}" class="underline">
             <h4 class="vault-name text-dark text-center justify-content-center">
               {{ vaultProp.name }}
             </h4>
@@ -45,6 +45,7 @@ export default {
 .vault-cards:hover{
   transform: translateY(-2px);
   box-shadow: 2px 8px 16px 2px aqua;
+  cursor: pointer;
 }
 .vault-cards{
   transition: all .3s;
@@ -61,6 +62,9 @@ export default {
 .card{
   height: 200px;
   width: 200px
+}
+.underline{
+  text-decoration: none;
 }
 
 </style>

@@ -18,6 +18,7 @@
             <router-link :to="{name:'Profile', params:{id:keepProp.creatorId}}">
               <i class="icon fa fa-user-circle mr-5" aria-hidden="true"></i>
             </router-link>
+            <i class="fa fa-minus text-danger" aria-hidden="true" @click="removeKeep"></i>
             <ActiveKeepComponents :keep="keepProp" />
           </div>
         </div>
@@ -29,20 +30,33 @@
 <script>
 
 import { reactive } from '@vue/reactivity'
+import { vaultKeepsService } from '../services/VaultKeepsService'
+import { logger } from '../utils/Logger'
 
 export default {
-  name: 'KeepsComponent',
+  name: 'VaultKeepComponent',
   props: {
     keepProp: {
       type: Object,
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const state = reactive({
 
     })
-    return { state }
+    return {
+      state,
+      removeKeep() {
+        try {
+          if (window.confirm('Are you sure you want to remove this Keep from this Vault?')) {
+            vaultKeepsService.deleteVaultKeep(props.keepProp.vaultKeepId)
+          }
+        } catch (error) {
+          logger.log(error)
+        }
+      }
+    }
   }
 
 }
@@ -70,9 +84,6 @@ export default {
 .font{
   color: aqua;
   box-shadow: #aa50e2;
-  color: white;
-  font-size: 20px;
-  text-shadow: -1px 1px 2px #000, 1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 #000;
 }
 
 .font:hover{
@@ -85,8 +96,7 @@ export default {
   transform: translateY(-3px);
 }
 .icon{
-  color:rgb(212, 211, 211);
-   text-shadow: -1px 1px 2px #000, 1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 #000;
+  color:rgb(212, 211, 211)
 }
 .keep-name:hover{
 cursor: pointer;

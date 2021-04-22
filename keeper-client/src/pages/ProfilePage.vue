@@ -34,8 +34,6 @@
       <div class="row pic ml-3" data-toggle="modal" data-target="#exampleModal">
         <keepsComponent v-for="k in state.profileKeeps" :key="k.id" :keep-prop="k" />
       </div>
-
-      <!-- <img :src="state.profileKeeps.picture" alt=""> -->
     </div>
   </div>
 </template>

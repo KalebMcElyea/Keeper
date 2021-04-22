@@ -70,7 +70,7 @@ namespace keeper_server.Service
 
         internal IEnumerable<Vault> GetVaultsByAccountId(string id)
         {
-            return _vRepo.GetByCreatorId(id);
+            return _vRepo.GetVaultsByOwnerId(id);
         }
     }
 }

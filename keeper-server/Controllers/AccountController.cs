@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 using CodeWorks.Auth0Provider;
 using keeper_server.Models;
 using keeper_server.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace keeper_server.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class AccountController : ControllerBase
@@ -24,6 +26,7 @@ namespace keeper_server.Controllers
         }
 
         [HttpGet]
+
         public async Task<ActionResult<Profile>> Get()
         {
             try
@@ -40,6 +43,7 @@ namespace keeper_server.Controllers
 
 
         [HttpGet("keeps")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Keep>>> GetKeepsByAccountId()
         {
             try
@@ -55,11 +59,13 @@ namespace keeper_server.Controllers
 
 
         [HttpGet("vaults")]
-        public async Task<ActionResult<IEnumerable<Vault>>> GetVaultssByAccountId()
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Vault>>> GetVaultsByAccountId()
         {
             try
             {
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                IEnumerable<Vault> vaults = _valService.GetVaultsByAccountId(userInfo.Id);
                 return Ok(_valService.GetVaultsByAccountId(userInfo.Id));
             }
             catch (Exception e)

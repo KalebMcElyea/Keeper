@@ -39,15 +39,15 @@
               <hr>
             </div>
             <div>
-              <div class="footer m-5">
-                <button type="button" class="btn btn-danger m-2 font" data-dismiss="modal">
+              <div class="footer m-3 button">
+                <button type="button" class="btn btn-danger m-2 " data-dismiss="modal">
                   Close
                 </button>
                 <div class="dropdown open">
                   <button
                     type="button"
                     id="triggerId"
-                    class="btn btn-dark dropdown-toggle font"
+                    class="btn btn-dark dropdown-toggle"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
@@ -58,18 +58,18 @@
                     <select-vault
                       data-dismiss="modal"
                       aria-label="Close"
-                      v-for="v in state.profileVaults"
-                      :key="v.id"
-                      :vault-prop="v"
+                      v-for="val in state.accountVaults"
+                      :key="val.id"
+                      :vault-prop="val"
                       :keep-prop="keep"
                     />
                   </div>
                 </div>
                 <router-link :to="{name:'Profile', params:{id:keep.creatorId}}">
-                  <i class="fa fa-user-circle ml-5 text-dark fa-lg" aria-hidden="true"></i>
+                  <i class="fa fa-user-circle m-2 text-dark fa-lg userikon" aria-hidden="true"></i>
                   {{ keep.creator.name }}
                 </router-link>
-                <i class="fa fa-trash text-danger fa-lg ml-5" @click="deleteKeep" v-if="keep.creatorId == state.account.id" aria-hidden="true"></i>
+                <i class="fa fa-trash text-danger fa-lg ml-5 trash" @click="deleteKeep" v-if="keep.creatorId == state.account.id" aria-hidden="true"></i>
               </div>
             </div>
           </div>
@@ -86,6 +86,7 @@ import { AppState } from '../AppState'
 import { keepsService } from '../services/KeepsService'
 import { logger } from '../utils/Logger'
 import SelectVault from './SelectVault.vue'
+// import { accountService } from '../services/AccountService'
 export default {
   name: 'ActiveKeepComponents',
 
@@ -100,8 +101,10 @@ export default {
   setup(props) {
     const state = reactive({
       account: computed(() => AppState.account),
-      profileVaults: computed(() => AppState.profileVaults)
+      profileVaults: computed(() => AppState.profileVaults),
+      accountVaults: computed(() => AppState.accountVaults)
     })
+    // onMounted(() => accountService.getVaultsByAccountId())
     return {
       state,
       deleteKeep() {
@@ -140,7 +143,18 @@ export default {
   font-family: 'Lato', sans-serif;
 }
 .font{
-  font-family: 'Lato', sans-serif;
+font-family: 'Lato', sans-serif;
+color: white;
+font-size: 20px;
+text-shadow: -1px 1px 2px #000,  1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+.trash:hover{
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+.userikon:hover{
+cursor: pointer;
+  transform: translateY(-2px);
 }
 
 </style>

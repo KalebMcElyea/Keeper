@@ -1,5 +1,5 @@
 <template>
-  <div class="row m-2 container-fluid flex-grow-1" v-if="state.keeps">
+  <div class="row m-2 container-fluid flex-grow-1 card-columns" v-if="state.keeps">
     <div class="col-1 about text-left mt-5">
       <img class="rounded acc-img" :src="account.picture" alt="" />
     </div>
@@ -142,8 +142,8 @@
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </h1>
-          <div class="row">
-            <router-link :to="{name:'Vault', params:{id:state.vaults.creatorId}}">
+          <div class="row underline">
+            <router-link :to="{name:'Vault', params:{id:state.vaults.id}}" class="underline">
               <AccountVault-component v-for="val in state.vaults" :key="val.id" :vaults-prop="val" />
             </router-link>
           </div>
@@ -215,6 +215,9 @@ img {
 }
 .font{
   font-family: 'Lato', sans-serif;
+}
+.underline{
+  text-decoration: none;
 }
 
 </style>

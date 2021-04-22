@@ -10,7 +10,7 @@ class VaultsService {
 
   async getVaultsByAccountId() {
     try {
-      const res = await api.get('account/vaults')
+      const res = await api.get('/account/vaults')
       AppState.vaults = res.data
     } catch (err) {
       logger.error('Problems in the get vaults by account id', err)
@@ -26,6 +26,12 @@ class VaultsService {
     await api.delete('api/vaults/' + valId)
     const vaultIndex = AppState.vaults.findIndex(v => v.id === valId)
     AppState.vaults.splice(vaultIndex, 1)
+  }
+
+  async removeKeep(vaultKeepId) {
+    await api.delete('api/vaultskeeps/' + vaultKeepId)
+    const keepIndex = AppState.keeps.findIndex(k => k.id === vaultKeepId)
+    AppState.keeps.splice(keepIndex, 1)
   }
 }
 

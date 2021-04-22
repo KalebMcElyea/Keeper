@@ -14,7 +14,7 @@ class KeepsService {
 
   async getKeepsByAccountId() {
     try {
-      const res = await api.get('account/keeps')
+      const res = await api.get('/account/keeps')
       AppState.keeps = res.data
     } catch (err) {
       logger.error('Problems in the get keeps by account id', err)
@@ -30,6 +30,13 @@ class KeepsService {
   async createKeep(keep) {
     await api.post('api/keeps', keep)
     this.getKeepsByAccountId()
+  }
+
+  // Many2Many
+  async getKeepsByPublicVault(id) {
+    const res = await api.get('api/vaults/' + id + '/keeps')
+    logger.log(res)
+    AppState.keeps = res.data
   }
 }
 
