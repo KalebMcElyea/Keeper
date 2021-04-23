@@ -1,9 +1,10 @@
 <template>
-  <div class="VaultPage">
+  <div class="VaultPage pt-5">
     <h5 class="text-light ml-4">
       Total Keeps in this Vault: {{ state.keeps.length }}
     </h5>
-    <h5 class="text-light ml-2">
+
+    <h5 class="text-light ml-2 row">
       <br>
       <vaultKeepComponent v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
     </h5>

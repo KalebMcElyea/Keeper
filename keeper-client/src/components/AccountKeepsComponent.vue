@@ -1,5 +1,8 @@
 <template>
-  <div class="keep-cards m-2">
+  <div class="keep-cards m-2"
+       data-toggle="modal"
+       :data-target="'#keepModal' + keepsProp.id"
+  >
     <div class="card mb-0 rounded">
       <img
         class="card-img pic"
@@ -17,6 +20,7 @@
         </div>
       </div>
     </div>
+    <ActiveKeepComponents :keep="keepsProp" />
   </div>
 </template>
 
@@ -62,8 +66,8 @@ export default {
 }
 
 .keep-cards:hover{
-  transform: translateY(-10px);
-  box-shadow: 4px 6px 10px 4px aqua;
+  // transform: translateY(-10px);
+  box-shadow: 3px 3px 8px 2px aqua;
   transition: 0.3s ease-in-out;
 }
 .keep-cards{

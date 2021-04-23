@@ -1,6 +1,9 @@
 <template>
   <div class="card-container keep-cards m-2 justify-content-center ml-5">
-    <div class="card">
+    <div class="card"
+         data-toggle="modal"
+         :data-target="'#keepModal' + keepProp.id"
+    >
       <img
         class="card card-img pic"
         :src="keepProp.img"
@@ -90,6 +93,9 @@ export default {
 }
 .keep-name:hover{
 cursor: pointer;
+}
+.card:hover{
+  cursor: pointer;
 }
 
 </style>

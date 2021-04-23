@@ -1,8 +1,10 @@
 <template>
   <div class="SelectVault">
-    <button @click="addToVault" class="dropdown-item">
-      {{ vaultProp.name }}
-    </button>
+    <router-link :to="{name:'Vault', params:{id:vaultProp.id}}" class="noUnderline">
+      <button @click="addToVault" class="dropdown-item">
+        {{ vaultProp.name }}
+      </button>
+    </router-link>
   </div>
 </template>
 
@@ -32,4 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.noUnderline{
+  text-decoration: none;
+}
 </style>

@@ -5,7 +5,7 @@
         <img class="nav-image"
              alt="logo"
              src="../assets/img/Vault-Keeper.jpg"
-             height="45"
+             height="110"
         />
       </div>
     </router-link>
@@ -20,7 +20,7 @@
     >
       <span class="navbar-toggler-icon" />
     </button>
-    <div class="collapse navbar-collapse hoverable" id="navbarText">
+    <div class="collapse navbar-collapse hoverable mt-4" id="navbarText">
       <ul class="navbar-nav mr-auto hoverable">
         <li class="nav-item">
           <router-link :to="{ name: 'Home' }" class="nav-link font">
@@ -28,7 +28,7 @@
           </router-link>
         </li>
       </ul>
-      <span class="navbar-text font">
+      <span class="navbar-text font mb-4">
         <button
           class="btn btn-outline-primary text-uppercase"
           @click="login"
@@ -122,13 +122,13 @@ a:hover {
   width: 80px;
   font-family: 'Lato', sans-serif;
 }
-.nav-color{
-  background-color: black;
+.navcolor{
+  background-color: #0b0b0b
 }
-.nav-image{
-  width: 300px;
-  height: 300px;
-}
+/* .nav-image{
+  width: 175px;
+  height: 175px;
+} */
 .font{
   font-family: 'Lato', sans-serif;
 }

@@ -18,7 +18,7 @@
             <router-link :to="{name:'Profile', params:{id:keepProp.creatorId}}">
               <i class="icon fa fa-user-circle mr-5" aria-hidden="true"></i>
             </router-link>
-            <i class="fa fa-minus text-danger" aria-hidden="true" @click="removeKeep"></i>
+            <i class="fas fa-minus-circle fa-xs text-danger remove" @click="removeKeep"></i>
             <ActiveKeepComponents :keep="keepProp" />
           </div>
         </div>
@@ -91,15 +91,31 @@ export default {
 }
 .font{
   font-family: 'Libre Baskerville', serif;
+  color: white;
+font-size: 20px;
+text-shadow: -1px 1px 2px #000,  1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 #000;
 }
 .icon:hover{
   transform: translateY(-3px);
 }
 .icon{
-  color:rgb(212, 211, 211)
+  color:rgb(212, 211, 211);
+font-size: 20px;
+text-shadow: -1px 1px 2px #000,  1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 #000;
 }
 .keep-name:hover{
 cursor: pointer;
+}
+.remove:hover{
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+.remove{
+  position: absolute;
+  bottom: 250px;
+  left: 270px;
+  text-shadow: -1px 1px 2px #000,  1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 #000;
+
 }
 
 </style>

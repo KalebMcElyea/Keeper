@@ -1,5 +1,5 @@
 <template>
-  <div class="ActiveKeepComponents">
+  <div class="ActiveKeepComponents size">
     <div class="modal fade bd-example-modal-lg"
          :id="'keepModal' + keep.id"
          tabindex="-1"
@@ -31,7 +31,7 @@
             <i class="fa fa-archive vault-icon mt-2" aria-hidden="true"> : 0</i>
             <i class="fa fa-share-alt share-icon mt-2" aria-hidden="true"> : 0</i>
             <div class="col-5 mt-5">
-              <h5 class="move-text ml-2">
+              <h5 class="text-left ml-2">
                 {{ keep.description }}
                 <br>
                 Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
@@ -39,11 +39,11 @@
               <hr>
             </div>
             <div>
-              <div class="footer m-3 button">
-                <button type="button" class="btn btn-danger m-2 " data-dismiss="modal">
+              <div class="row footer m-4 button ">
+                <button type="button" class="btn btn-danger mx-5 button-font" data-dismiss="modal">
                   Close
                 </button>
-                <div class="dropdown open">
+                <div class="dropdown open button-font">
                   <button
                     type="button"
                     id="triggerId"
@@ -54,7 +54,7 @@
                   >
                     ADD TO VAULT
                   </button>
-                  <div class="dropdown-menu" aria-labelledby="triggerId">
+                  <div class="dropdown-menu mx-5" aria-labelledby="triggerId">
                     <select-vault
                       data-dismiss="modal"
                       aria-label="Close"
@@ -66,7 +66,7 @@
                   </div>
                 </div>
                 <router-link :to="{name:'Profile', params:{id:keep.creatorId}}">
-                  <i class="fa fa-user-circle m-2 text-dark fa-lg userikon" aria-hidden="true"></i>
+                  <i class="fa fa-user-circle ml-5 text-dark fa-lg userikon" aria-hidden="true"></i>
                   {{ keep.creator.name }}
                 </router-link>
                 <i class="fa fa-trash text-danger fa-lg ml-5 trash" @click="deleteKeep" v-if="keep.creatorId == state.account.id" aria-hidden="true"></i>
@@ -125,16 +125,16 @@ export default {
 <style lang="scss" scoped>
 .view-icon{
   position: absolute;
-  right: 290px;
+  right: 180px;
 }
 
 .share-icon{
   position: absolute;
-  right: 135px;
+  right: 35px;
 }
 .vault-icon{
   position: absolute;
-  right: 215px;
+  right: 105px;
 }
 .modal-title{
   font-family: 'Lato', sans-serif;
@@ -155,6 +155,9 @@ text-shadow: -1px 1px 2px #000,  1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 
 .userikon:hover{
 cursor: pointer;
   transform: translateY(-2px);
+}
+.button-font{
+  font-family: 'Playfair Display', serif;
 }
 
 </style>

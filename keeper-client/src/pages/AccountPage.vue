@@ -4,14 +4,14 @@
       <img class="rounded acc-img" :src="account.picture" alt="" />
     </div>
 
-    <h1 class="text-light col-6 m-5 pt-3 font">
-      {{ account.name }}
+    <h1 class="text-light col-6 mt-2 pt-3">
+      <span class="name-font">{{ account.name }}</span>
       <br>
-      <h4>
-        <small class="font"> Vaults: {{ state.vaults.length }} </small>
+      <h4 class="count-font mt-2">
+        Vaults: {{ state.vaults.length }}
       </h4>
-      <h4>
-        <small class="font"> Keeps: {{ state.keeps.length }}</small>
+      <h4 class="count-font">
+        Keeps: {{ state.keeps.length }}
       </h4>
     </h1>
     <div class="col-12 mt-5">
@@ -24,7 +24,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title font">
+              <h5 class="modal-title title-font">
                 Create A Keep
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -83,9 +83,9 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title font">
+              <h1 class="modal-title font">
                 Create A Vault
-              </h5>
+              </h1>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -122,8 +122,8 @@
               </form>
             </div>
             <form>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger font" data-dismiss="modal">
+              <div class="modal-footer button-font">
+                <button type="button" class="btn btn-danger font text-dark" data-dismiss="modal">
                   Close
                 </button>
                 <button class="btn btn-dark font" @click="createVault">
@@ -137,29 +137,27 @@
 
       <div class="row mt-5">
         <div class="col-12">
-          <h1 class=" text-light mb-3 font">
+          <h1 class=" text-light mb-3 vaultFont">
             Vaults: <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createVault">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </h1>
-          <div class="row underline">
-            <router-link :to="{name:'Vault', params:{id:state.vaults.id}}" class="underline">
-              <AccountVault-component v-for="val in state.vaults" :key="val.id" :vaults-prop="val" />
-            </router-link>
-          </div>
         </div>
+      </div>
+      <div class="row underline">
+        <AccountVault-component v-for="val in state.vaults" :key="val.id" :vaults-prop="val" />
       </div>
 
       <div class="row mt-5">
         <div class="col-12">
-          <h1 class="text-light ml-3 font">
+          <h1 class="text-light ml-3 keepFont">
             Keeps: <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createKeep">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </h1>
           <div class="col-12 d-flex ">
             <div class="row">
-              <AccountKeep-component v-for="ak in state.keeps" :key="ak.id" :keeps-prop="ak" />
+              <AccountKeep-component v-for="keep in state.keeps" :key="keep.id" :keeps-prop="keep" />
             </div>
           </div>
         </div>
@@ -214,10 +212,46 @@ img {
   background-color: black;
 }
 .font{
+  font-size: 18px;
   font-family: 'Lato', sans-serif;
 }
 .underline{
   text-decoration: none;
+}
+.button-font{
+  font-family: 'Playfair Display', serif;
+}
+.title-font{
+  font-size: 23px;
+  font-family: 'Lato', sans-serif;
+  font-weight: bolder;
+  text-shadow: black 2px 4px 4px 0;
+}
+.close{
+  color: red;
+}
+.close:hover{
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+.button-color{
+  color: black
+}
+.keepFont{
+font-size: 30px;
+font-family: 'Lato', sans-serif;
+}
+.vaultFont{
+  font-size: 30px;
+  font-family: 'Lato', sans-serif;
+}
+.count-font{
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+}
+.name-font{
+  font-family: 'Lato', sans-serif;
+  font-size: 45px;
 }
 
 </style>

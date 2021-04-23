@@ -23,7 +23,7 @@
         </h3>
       </div>
     </div>
-    <div class="row" data-toggle="modal" data-target="#exampleModal">
+    <div class="row vaults" data-toggle="modal" data-target="#exampleModal">
       <vaultsComponent v-for="v in state.profileVaults" :key="v.id" :vault-prop="v" />
     </div>
     <div class="col-12">
@@ -77,4 +77,5 @@ export default {
 .font{
   font-family: 'Lato', sans-serif;
 }
+
 </style>

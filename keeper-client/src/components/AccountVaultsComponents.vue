@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3 background">
+  <div class="col-md-3 background">
     <router-link :to="{name:'Vault', params:{id:vaultsProp.id}}" class="noUnderline">
       <div class="card text-center vault-card d-flex justify-content-center">
         <h4 class="font noUnderline">
@@ -23,6 +23,7 @@ import { computed, reactive } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { vaultsService } from '../services/VaultsService'
 import { logger } from '../utils/Logger'
+// import $ from "jquery"
 
 export default {
   name: 'AccountVaultComponent',
@@ -39,10 +40,12 @@ export default {
     })
     return {
       state,
-      deleteVault() {
+      async deleteVault() {
         try {
           if (window.confirm('Are you sure you want to delete this Vault?')) {
-            vaultsService.deleteVault(props.vaultsProp.id)
+            await vaultsService.deleteVault(props.vaultsProp.id)
+
+            // $('#nameofyourmodal').modal('toggle')
           }
         } catch (error) {
           logger.log(error)
@@ -56,7 +59,7 @@ export default {
 <style lang="scss" scoped>
 
 .vault-card:hover{
-  transform: translateY(-2px);
+  transform: translateY(-10px);
   box-shadow: 2px 8px 16px 2px aqua;
   text-decoration: none;
 }
@@ -65,8 +68,9 @@ export default {
 }
 
 .vault-card{
- height: 250px;
-  width: 250px;
+height: 250px;
+width: 250px;
+background-color: gray;
 }
 
 // .vault-card{
